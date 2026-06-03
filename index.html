@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luv To Paint — Painting & Renovation in Barrie, Ontario</title>
+    <meta name="description" content="Professional painting and renovation services in Barrie, Ontario. Interior painting, kitchen remodeling, bathroom renovation, trim work, color matching, wallpaper installation.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS RESET & ROOT ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --coral: #E8725A;
+            --coral-light: #F08C78;
+            --coral-dark: #D15A44;
+            --cream: #FDF8F3;
+            --cream-warm: #FAF0E6;
+            --charcoal: #2D2D2D;
+            --charcoal-light: #4A4A4A;
+            --white: #FFFFFF;
+            --gray-100: #F5F5F5;
+            --gray-200: #E8E8E8;
+            --gray-300: #D1D1D1;
+            --gray-500: #8A8A8A;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+            --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: 0.25s ease;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== UTILITY ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .section { padding: 80px 0; }
+        .section--alt { background: var(--cream); }
+        .section__label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--coral);
+            margin-bottom: 12px;
+        }
+        .section__title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section__subtitle {
+            font-size: 1.1rem;
+            color: var(--charcoal-light);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nav__logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--charcoal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav__logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .nav__links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav__links a {
+            text-decoration: none;
+            color: var(--charcoal-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav__links a:hover { color: var(--coral); }
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral);
+            transition: width 0.25s ease;
+        }
+        .nav__links a:hover::after { width: 100%; }
+        .nav__cta {
+            background: var(--coral);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: var(--transition);
+        }
+        .nav__cta:hover {
+            background: var(--coral-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(232,114,90,0.35);
+        }
+        .nav__cta::after { display: none !important; }
+
+        /* Mobile nav toggle */
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav__toggle span {
+            width: 26px;
+            height: 3px;
+            background: var(--charcoal);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, #FDF4EE 40%, var(--cream-warm) 100%);
+            padding: 100px 0 90px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .hero__content { position: relative; z-index: 2; }
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--charcoal-light);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+        .hero__badge-star { color: #F5A623; font-size: 0.85rem; }
+        .hero__title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.8rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--charcoal);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero__title em {
+            font-style: normal;
+            color: var(--coral);
+            position: relative;
+        }
+        .hero__title em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(232,114,90,0.18);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero__desc {
+            font-size: 1.15rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn--primary {
+            background: var(--coral);
+            color: white;
+            box-shadow: 0 4px 18px rgba(232,114,90,0.35);
+        }
+        .btn--primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(232,114,90,0.45);
+        }
+        .btn--outline {
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--gray-300);
+        }
+        .btn--outline:hover {
+            border-color: var(--coral);
+            color: var(--coral);
+            background: rgba(232,114,90,0.04);
+        }
+        .hero__visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero__card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+            max-width: 420px;
+        }
+        .hero__card-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--coral);
+            margin-bottom: 8px;
+        }
+        .hero__card-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .hero__card-swatches { display: flex; gap: 10px; margin-bottom: 20px; }
+        .swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+            border: 3px solid white;
+            outline: 1px solid var(--gray-200);
+        }
+        .swatch--1 { background: #E8725A; }
+        .swatch--2 { background: #FDF8F3; }
+        .swatch--3 { background: #2D2D2D; }
+        .swatch--4 { background: #A8D8B9; }
+        .swatch--5 { background: #7B9EBF; }
+        .hero__card-stats { display: flex; gap: 24px; }
+        .stat { text-align: center; }
+        .stat__number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--coral);
+        }
+        .stat__label { font-size: 0.8rem; color: var(--gray-500); font-weight: 500; }
+
+        .hero__blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.10;
+            z-index: 1;
+        }
+        .hero__blob--1 {
+            width: 300px;
+            height: 300px;
+            background: var(--coral);
+            top: -60px;
+            right: -40px;
+        }
+        .hero__blob--2 {
+            width: 200px;
+            height: 200px;
+            background: var(--coral);
+            bottom: -30px;
+            left: 20px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .service-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--coral-light);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--coral);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card__icon {
+            width: 52px;
+            height: 52px;
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+        .service-card__title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+        .service-card__desc {
+            font-size: 0.92rem;
+            color: var(--charcoal-light);
+            line-height: 1.6;
+        }
+
+        /* ===== ABOUT ===== */
+        .about__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        .about__image-wrap {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0DCD0 50%, var(--coral-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        .about__image-placeholder {
+            text-align: center;
+            color: var(--coral-dark);
+            padding: 40px;
+        }
+        .about__image-placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 12px;
+            opacity: 0.7;
+        }
+        .about__image-placeholder-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+        .about__badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about__badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        .about__text h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--charcoal);
+        }
+        .about__text p {
+            font-size: 1.05rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .about__highlights {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .about__highlights li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        .about__highlights li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--coral);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ===== BEFORE/AFTER SHOWCASE ===== */
+        .showcase__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+        .showcase-item {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        .showcase-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .showcase-item__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            aspect-ratio: 2/1.3;
+            background: var(--gray-200);
+        }
+        .showcase-item__img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--cream);
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .showcase-item__img--before { background: linear-gradient(135deg, #E8E0D8, #D5CCC2); }
+        .showcase-item__img--after { background: linear-gradient(135deg, #FDF8F3, #FAF0E6); }
+        .showcase-item__img-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .showcase-item__body { padding: 20px 24px; }
+        .showcase-item__title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: var(--charcoal);
+        }
+        .showcase-item__desc {
+            font-size: 0.88rem;
+            color: var(--charcoal-light);
+            line-height: 1.5;
+        }
+
+        /* ===== REVIEWS BADGE ===== */
+        .reviews {
+            text-align: center;
+            padding: 60px 0;
+            background: white;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .reviews__badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 28px 48px;
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        .reviews__stars {
+            color: #F5A623;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+        }
+        .reviews__rating {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--charcoal);
+        }
+        .reviews__count {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            font-weight: 500;
+        }
+        .reviews__text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            max-width: 400px;
+            font-style: italic;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+            align-items: start;
+        }
+        .contact__info h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .contact__info p {
+            color: var(--charcoal-light);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .contact__detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .contact__detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .contact__phone {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--coral);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .contact__phone:hover { color: var(--coral-dark); }
+
+        .contact__form {
+            background: white;
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+        }
+        .form__group { margin-bottom: 18px; }
+        .form__label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+            color: var(--charcoal);
+        }
+        .form__input, .form__textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+        .form__input:focus, .form__textarea:focus {
+            outline: none;
+            border-color: var(--coral);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(232,114,90,0.12);
+        }
+        .form__textarea { min-height: 120px; resize: vertical; }
+        .form__submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--coral);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+        .form__submit:hover {
+            background: var(--coral-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(232,114,90,0.35);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 48px 0 28px;
+            text-align: center;
+        }
+        .footer__logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .footer__tagline { color: var(--gray-300); font-size: 0.9rem; margin-bottom: 20px; }
+        .footer__links { display: flex; gap: 24px; justify-content: center; list-style: none; margin-bottom: 20px; }
+        .footer__links a { color: var(--gray-300); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+        .footer__links a:hover { color: var(--coral-light); }
+        .footer__copy { color: var(--gray-500); font-size: 0.82rem; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .nav__toggle { display: flex; }
+            .nav__links--open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 2px solid var(--gray-200);
+                box-shadow: var(--shadow-md);
+            }
+            .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+            .about__grid { grid-template-columns: 1fr; gap: 32px; }
+            .contact__grid { grid-template-columns: 1fr; }
+            .showcase__grid { grid-template-columns: 1fr; }
+            .services__grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__logo">
+                <span class="nav__logo-icon">🎨</span>
+                Luv To Paint
+            </a>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#showcase">Work</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact" class="nav__cta">Get a Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__inner">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="hero__badge-star">★</span> Top-Rated in Barrie
+                </div>
+                <h1 class="hero__title">
+                    Love Your<br><em>Space</em> Again
+                </h1>
+                <p class="hero__desc">
+                    Transform your home with Barrie's trusted painting and renovation experts. 
+                    From fresh coats to full kitchen remodels — we bring warmth, precision, 
+                    and craftsmanship to every project.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn btn--primary">Get Your Free Estimate</a>
+                    <a href="#showcase" class="btn btn--outline">View Our Work →</a>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__card">
+                    <div class="hero__card-label">Color Consultation</div>
+                    <div class="hero__card-title">Find Your Perfect Palette</div>
+                    <div class="hero__card-swatches">
+                        <div class="swatch swatch--1"></div>
+                        <div class="swatch swatch--2"></div>
+                        <div class="swatch swatch--3"></div>
+                        <div class="swatch swatch--4"></div>
+                        <div class="swatch swatch--5"></div>
+                    </div>
+                    <div class="hero__card-stats">
+                        <div class="stat">
+                            <div class="stat__number">500+</div>
+                            <div class="stat__label">Projects Done</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__number">10+</div>
+                            <div class="stat__label">Years Exp.</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__number">98%</div>
+                            <div class="stat__label">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="section" id="services">
+        <div class="container">
+            <span class="section__label">What We Do</span>
+            <h2 class="section__title">Professional Painting &amp; Renovation Services</h2>
+            <p class="section__subtitle">
+                Comprehensive home transformation services — everything you need to fall in love with your space again.
+            </p>
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">🖌️</div>
+                    <div class="service-card__title">Interior Painting</div>
+                    <div class="service-card__desc">
+                        Flawless walls, ceilings, and trim. Premium paints, meticulous prep, 
+                        and clean lines that breathe new life into every room.
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🍳</div>
+                    <div class="service-card__title">Kitchen Remodeling</div>
+                    <div class="service-card__desc">
+                        Cabinet painting, backsplash installation, and full kitchen makeovers 
+                        that blend style with everyday function.
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🛁</div>
+                    <div class="service-card__title">Bathroom Renovation</div>
+                    <div class="service-card__desc">
+                        Vanity upgrades, tile work, fresh paint, and fixture updates — 
+                        turning bathrooms into serene retreats.
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">📐</div>
+                    <div class="service-card__title">Trim &amp; Detail Work</div>
+                    <div class="service-card__desc">
+                        Crown molding, baseboards, wainscoting, and door casings — 
+                        the finishing touches that elevate your home.
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🎨</div>
+                    <div class="service-card__title">Color Matching</div>
+                    <div class="service-card__desc">
+                        Expert color consultation and precision matching. Bring us a swatch, 
+                        a photo, or an idea — we'll match it perfectly.
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">🧻</div>
+                    <div class="service-card__title">Wallpaper Installation</div>
+                    <div class="service-card__desc">
+                        Seamless wallpaper hanging, pattern alignment, and removal — 
+                        from accent walls to full-room transformations.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section section--alt" id="about">
+        <div class="container">
+            <span class="section__label">Who We Are</span>
+            <h2 class="section__title">Proudly Serving Barrie &amp; Surrounding Areas</h2>
+            <div class="about__grid">
+                <div class="about__image-wrap">
+                    <div class="about__image-placeholder">
+                        <div class="about__image-placeholder-icon">🏠</div>
+                        <div class="about__image-placeholder-text">
+                            Proudly Barrie Local
+                        </div>
+                    </div>
+                    <div class="about__badge">
+                        <span class="about__badge-dot"></span>
+                        Available for Estimates
+                    </div>
+                </div>
+                <div class="about__text">
+                    <h3>A Passion for Transforming Spaces</h3>
+                    <p>
+                        Based right here in Barrie, Ontario, Luv To Paint was built on a simple belief: 
+                        every home deserves to feel beautiful. We're not just painters — we're craftspeople 
+                        who genuinely care about the spaces you live in.
+                    </p>
+                    <p>
+                        Whether it's refreshing a single room or reimagining your entire home, we bring 
+                        the same dedication to every project. No shortcuts, no rushed jobs — just quality 
+                        work from people who love what they do.
+                    </p>
+                    <ul class="about__highlights">
+                        <li>Locally owned &amp; operated in Barrie, Ontario</li>
+                        <li>Fully licensed, insured &amp; WSIB covered</li>
+                        <li>Eco-friendly, low-VOC paint options</li>
+                        <li>Clean, respectful, on-time — every time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BEFORE/AFTER SHOWCASE ===== -->
+    <section class="section" id="showcase">
+        <div class="container">
+            <span class="section__label">Our Work</span>
+            <h2 class="section__title">Before &amp; After — The Luv To Paint Difference</h2>
+            <p class="section__subtitle">
+                Real transformations from homes across Barrie. Each project tells a story of renewal and care.
+            </p>
+            <div class="showcase__grid">
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Living Room Refresh</div>
+                        <div class="showcase-item__desc">Warm neutral palette with crisp white trim — completely opened up the space.</div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Modern Kitchen Makeover</div>
+                        <div class="showcase-item__desc">Painted cabinets, new hardware, and a timeless subway tile backsplash.</div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Spa-Like Bathroom Retreat</div>
+                        <div class="showcase-item__desc">Soft sage walls with updated vanity and brushed gold fixtures.</div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Elegant Dining Room</div>
+                        <div class="showcase-item__desc">Rich accent wall with wainscoting detail — perfect for entertaining.</div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Cozy Bedroom Transformation</div>
+                        <div class="showcase-item__desc">Calming blue-grey tones with smooth, flawless wall finish.</div>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-item__images">
+                        <div class="showcase-item__img showcase-item__img--before">
+                            <span class="showcase-item__img-label">Before</span>
+                            🏚️
+                        </div>
+                        <div class="showcase-item__img showcase-item__img--after">
+                            <span class="showcase-item__img-label">After</span>
+                            ✨
+                        </div>
+                    </div>
+                    <div class="showcase-item__body">
+                        <div class="showcase-item__title">Home Office Upgrade</div>
+                        <div class="showcase-item__desc">Productive and polished — fresh paint, new trim, and accent wallpaper.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5-STAR REVIEW BADGE ===== -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="reviews__badge">
+                <div class="reviews__stars">★★★★★</div>
+                <div class="reviews__rating">5.0</div>
+                <div class="reviews__count">Based on 80+ reviews</div>
+                <div class="reviews__text">
+                    "The best painting experience we've ever had. Our home feels brand new — 
+                    and the team was a joy to work with!"
+                </div>
+                <div style="font-size:0.85rem; color: var(--charcoal-light); margin-top:4px;">
+                    — Sarah M., Barrie ON
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section--alt" id="contact">
+        <div class="container">
+            <span class="section__label">Get In Touch</span>
+            <h2 class="section__title">Let's Talk About Your Project</h2>
+            <p class="section__subtitle">
+                Ready to love your space again? Reach out for a free, no-obligation estimate. We'd love to hear from you.
+            </p>
+            <div class="contact__grid">
+                <div class="contact__info">
+                    <h3>Contact Us</h3>
+                    <p>
+                        Serving Barrie, Innisfil, Oro-Medonte, and throughout Simcoe County. 
+                        Call or fill out the form — we typically respond within 24 hours.
+                    </p>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon">📞</div>
+                        <div>
+                            <div style="font-size:0.8rem; color: var(--gray-500); text-transform:uppercase; letter-spacing:1px;">Call Us</div>
+                            <a href="tel:+17051234567" class="contact__phone">(705) 123-4567</a>
+                        </div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon">📧</div>
+                        <div>
+                            <div style="font-size:0.8rem; color: var(--gray-500); text-transform:uppercase; letter-spacing:1px;">Email</div>
+                            <a href="mailto:hello@luvtopaint.ca" style="color: var(--charcoal); text-decoration:none; font-weight:600;">hello@luvtopaint.ca</a>
+                        </div>
+                    </div>
+                    <div class="contact__detail">
+                        <div class="contact__detail-icon">📍</div>
+                        <div>
+                            <div style="font-size:0.8rem; color: var(--gray-500); text-transform:uppercase; letter-spacing:1px;">Location</div>
+                            <span style="font-weight:600;">Barrie, Ontario</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact__form" id="contactForm">
+                    <div class="form__group">
+                        <label class="form__label" for="name">Full Name</label>
+                        <input type="text" id="name" class="form__input" placeholder="Your name" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form__input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form__input" placeholder="(705) 555-0123">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="service">Service Interested In</label>
+                        <select id="service" class="form__input" style="appearance:auto;">
+                            <option value="">Select a service...</option>
+                            <option value="interior-painting">Interior Painting</option>
+                            <option value="kitchen-remodeling">Kitchen Remodeling</option>
+                            <option value="bathroom-renovation">Bathroom Renovation</option>
+                            <option value="trim-work">Trim &amp; Detail Work</option>
+                            <option value="color-matching">Color Matching</option>
+                            <option value="wallpaper">Wallpaper Installation</option>
+                            <option value="other">Other / Multiple Services</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="message">Tell Us About Your Project</label>
+                        <textarea id="message" class="form__textarea" placeholder="Describe what you're looking for — room type, approximate size, timeline, etc." required></textarea>
+                    </div>
+                    <button type="submit" class="form__submit">Send Message ✉️</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__logo">🎨 Luv To Paint</div>
+            <div class="footer__tagline">Love Your Space Again — Barrie, Ontario</div>
+            <ul class="footer__links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#showcase">Our Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="footer__copy">
+                &copy; 2026 Luv To Paint. All rights reserved. Serving Barrie &amp; Simcoe County with ❤️
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav__links--open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav__links--open');
+            });
+        });
+
+        // Contact form handler
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = contactForm.querySelector('.form__submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Message Sent! ✓';
+            btn.style.background = '#4CAF50';
+            contactForm.reset();
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 3000);
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Sticky nav shadow on scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
