@@ -174,10 +174,6 @@
         /* ===== HERO ===== */
         .hero {
             background: linear-gradient(135deg, var(--cream) 0%, #FDF4EE 40%, var(--cream-warm) 100%);
-            background-image: url("images/hero.jpg");
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: multiply;
             padding: 100px 0 90px;
             position: relative;
             overflow: hidden;
@@ -278,15 +274,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: url("images/hero.jpg") center/cover;
+            border-radius: 16px;
+            min-height: 380px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
         }
         .hero__card {
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
             border-radius: var(--radius-lg);
             padding: 32px;
             box-shadow: var(--shadow-lg);
             position: relative;
             z-index: 2;
-            max-width: 420px;
+            max-width: 380px;
         }
         .hero__card-label {
             font-size: 0.8rem;
